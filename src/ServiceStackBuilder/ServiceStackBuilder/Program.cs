@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ServiceStackBuilder
 {
@@ -58,7 +54,38 @@ namespace ServiceStackBuilder
 
         static void Process(string sln, string obj, string route)
         {
+            //figure out where we are in the sln file.
 
+            //Find the modles project
+            //create a new folder for this request object
+            //Create request
+            //Create response
+            //udpate the modles project file
+
+
+            //Find the interfaces project
+            //add new Manager interface
+            //add new Repository interface
+            //update interface project file
+
+
+            //Find the service deffinition
+            //Create a new service class with CRUD methods for this request object
+            //update service deffinition project file
+
+
+            //Find the managers project
+            //add a new manager file
+            //update the managers project file
+
+            //Find the repository project
+            //add a new repository file
+            //update repository project
+
+            //Find the apphost file (or container manager file)
+            //update this file with new interface mappings
+            
+            //DONE
         }
     }
 }
