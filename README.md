@@ -3,8 +3,9 @@
 A C# console application that automatically adds service stack CRUD routes for you.
 
 Inputs:
-- New Message Name
-- New Message Route
+- sln location
+- New Request Object Name
+- New Request Object Route
 
 Output:
 - A Message class
