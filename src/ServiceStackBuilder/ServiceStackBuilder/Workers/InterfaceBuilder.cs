@@ -10,7 +10,7 @@ using System.Xml.Linq;
 
 namespace ServiceStackBuilder.Workers
 {
-    public class InterfaceBuilder : IBuilder
+    public class InterfaceBuilder : Builder
     {
         private ISolution Solution { get; set; }
 
