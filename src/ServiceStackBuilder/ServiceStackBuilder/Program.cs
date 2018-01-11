@@ -76,6 +76,7 @@ namespace ServiceStackBuilder
             builders.Add(new InterfaceBuilder(solution));
             builders.Add(new ManagerBuilder(solution));
             builders.Add(new RepositoryBuilder(solution));
+            builders.Add(new ServiceBuilder(solution));
 
             return builders;
             
