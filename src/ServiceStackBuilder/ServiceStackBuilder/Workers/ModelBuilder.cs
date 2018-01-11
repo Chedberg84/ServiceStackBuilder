@@ -28,14 +28,14 @@ namespace ServiceStackBuilder.Workers
             //create request and response files
             Directory.CreateDirectory(workingDir);
 
-            string requestTemplatePath = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), "Templates\\RequestTemplate.txt");
+            string requestTemplatePath = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), "Templates\\CreateRequestTemplate.txt");
             string requestTemplate = File.ReadAllText(requestTemplatePath);
             requestTemplate = requestTemplate.Replace("<RequestTemplate>", UserInput.obj + "Request");
             string requestFileName = string.Format("{0}{1}", UserInput.obj, "Request.cs");
 
             File.WriteAllText(Path.Combine(workingDir, requestFileName), requestTemplate);
 
-            string responseTemplatePath = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), "Templates\\ResponseTemplate.txt");
+            string responseTemplatePath = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), "Templates\\CreateResponseTemplate.txt");
             string responseTemplate = File.ReadAllText(responseTemplatePath);
             responseTemplate = responseTemplate.Replace("<ResponseTemplate>", UserInput.obj + "Response");
             string responseFileName = string.Format("{0}{1}", UserInput.obj, "Response.cs");
@@ -68,6 +68,22 @@ namespace ServiceStackBuilder.Workers
             }
 
             doc.Save(projFile);
+        }
+        
+        private void BuildCreate()
+        {
+        }
+        
+        private void BuildRead()
+        {
+        }
+        
+        private void BuildUpdate()
+        {
+        }
+        
+        private void BuildDelete()
+        {
         }
     }
 }
