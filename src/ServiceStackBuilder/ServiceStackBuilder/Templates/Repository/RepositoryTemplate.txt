@@ -1,0 +1,35 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace <SolutionName>.Interfaces
+{
+    public class <Name>Repository : I<Name>Repository
+    {
+		public <Name>Repository()
+		{
+		}
+
+        public void Create(<Name> <name>)
+		{
+			throw new NotImplementedException();
+		}
+
+        public <Name> Read()
+		{
+			throw new NotImplementedException();
+		}
+
+        void Update(<Name> <name>)
+		{
+			throw new NotImplementedException();
+		}
+
+        void Delete(<Name> <name>)
+		{
+			throw new NotImplementedException();
+		}
+    }
+}

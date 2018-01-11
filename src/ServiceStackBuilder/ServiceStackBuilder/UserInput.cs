@@ -1,4 +1,6 @@
-﻿using System.IO;
+﻿using Onion.SolutionParser.Parser;
+using Onion.SolutionParser.Parser.Model;
+using System.IO;
 
 namespace ServiceStackBuilder
 {
@@ -13,6 +15,15 @@ namespace ServiceStackBuilder
             {
                 var slnInfo = new FileInfo(sln);
                 return slnInfo.DirectoryName;
+            }
+        }
+
+        public static string SolutionName
+        {
+            get
+            {
+                var slnInfo = new FileInfo(sln);
+                return slnInfo.Name;
             }
         }
     }

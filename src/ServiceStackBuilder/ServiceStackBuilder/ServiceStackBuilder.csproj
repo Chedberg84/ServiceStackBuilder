@@ -49,6 +49,17 @@
   <ItemGroup>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Workers\IBuilder.cs" />
+    <Compile Include="Workers\InterfaceBuilder.cs" />
+    <Compile Include="Workers\RepositoryBuilder.cs" />
+    <Compile Include="Workers\ManagerBuilder.cs" />
+    <Compile Include="Workers\ModelBuilder.cs" />
+    <Content Include="Templates\Manager\ManagerInterfaceTemplate.txt" />
+    <Content Include="Templates\Manager\ManagerTemplate.txt" />
+    <Content Include="Templates\Messages\RequestTemplate.txt" />
+    <Content Include="Templates\Messages\ResponseTemplate.txt" />
+    <Content Include="Templates\Repository\RepositoryTemplate.txt" />
+    <Content Include="Templates\Repository\RepositoryInterfaceTemplate.txt" />
     <Compile Include="UserInput.cs" />
   </ItemGroup>
   <ItemGroup>

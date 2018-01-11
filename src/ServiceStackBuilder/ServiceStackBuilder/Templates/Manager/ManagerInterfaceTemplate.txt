@@ -1,0 +1,16 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace <SolutionName>.Interfaces
+{
+    public interface I<Name>Manager
+    {
+        void Create(<Name> <name>);
+        <Name> Read();
+        void Update(<Name> <name>);
+        void Delete(<Name> <name>);
+    }
+}
