@@ -1,6 +1,3 @@
-using DevOps.AuditPlugin.ServiceModel;
-using DevOps.Synthesize.API.Interfaces;
-using DevOps.Synthesize.API.Repositories;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 
