@@ -1,1 +1,52 @@
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Moq;
 
+namespace <SolutionName>.UnitTests
+{
+    [TestClass]
+    public class <Name>ManagerTests
+    {
+        private <Name>Manager <Name>Manager;
+        private Mock<I<Name>Repository> MockI<Name>Repository;
+
+        [TestInitialize]
+        public void TestSetup()
+        {
+            MockI<Name>Repository = new Mock<I<Name>Repository>();
+            <Name>Manager = new <Name>Repository(MockI<Name>Repository);
+            
+            MockI<Name>Repository.Setup(x => x.Create(It.IsAny<Name>()));
+            MockI<Name>Repository.Setup(x => x.Read()).Returns(new <Name>());
+            MockI<Name>Repository.Setup(x => x.Update(It.IsAny<Name>()));
+            MockI<Name>Repository.Setup(x => x.Delete(It.IsAny<Name>()));
+        }
+
+        [TestMethod]
+        public void ManagerShouldCreate()
+        {
+            var <name> = new <Name>();
+            <Name>Manager.Create(<name>);
+        }
+        
+        [TestMethod]
+        public void ManagerShouldRead()
+        {
+            var response = <Name>Manager.Read();
+            Assert.IsNotNull(response);
+        }
+        
+        [TestMethod]
+        public void ManagerShouldUpdate()
+        {
+            var <name> = new <Name>();
+            <Name>Manager.Update(<name>);
+        }
+        
+        [TestMethod]
+        public void ManagerShouldDelete()
+        {
+            var <name> = new <Name>();
+            <Name>Manager.Delete(<name>);
+        }
+    }
+}
