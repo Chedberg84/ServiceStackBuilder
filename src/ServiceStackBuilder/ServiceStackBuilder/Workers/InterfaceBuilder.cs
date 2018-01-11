@@ -19,7 +19,7 @@ namespace ServiceStackBuilder.Workers
             Solution = solution;
         }
 
-        public void Go()
+        public override void Go()
         {
             Console.WriteLine("Building Interfaces");
 
