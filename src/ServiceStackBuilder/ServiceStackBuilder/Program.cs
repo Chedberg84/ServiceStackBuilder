@@ -1,11 +1,7 @@
-﻿using System;
-using Onion.SolutionParser.Parser;
-using System.Linq;
+﻿using Onion.SolutionParser.Parser;
 using Onion.SolutionParser.Parser.Model;
-using System.IO;
-using System.Xml.Linq;
-using System.Reflection;
 using ServiceStackBuilder.Workers;
+using System;
 using System.Collections.Generic;
 
 namespace ServiceStackBuilder
