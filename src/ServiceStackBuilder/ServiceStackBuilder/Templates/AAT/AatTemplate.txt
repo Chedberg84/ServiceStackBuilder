@@ -1,0 +1,71 @@
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using ServiceStack;
+using System;
+using System.Configuration;
+
+namespace <SolutionName>.AcceptanceTests
+{
+    [TestClass]
+    public class <Name>AcceptanceTests
+    {
+        AATServiceClientFactory serviceClientFactory;
+
+        [TestInitialize]
+        public void Initialize()
+        {
+            serviceClientFactory = new AATServiceClientFactory(Guid.NewGuid());
+        }
+
+        [TestMethod]
+        public void AAT_Create<Name>s()
+        {
+            var request = new Create<Name>();
+
+            using (IServiceClient client = serviceClientFactory.GetServiceClient(ConfigurationManager.AppSettings["ServiceUrl"]))
+            {
+                var response = client.Post(request);
+
+                Assert.IsNull(response.Status);
+            }
+        }
+        
+        [TestMethod]
+        public void AAT_Read<Name>s()
+        {
+            var request = new Read<Name>();
+
+            using (IServiceClient client = serviceClientFactory.GetServiceClient(ConfigurationManager.AppSettings["ServiceUrl"]))
+            {
+                var response = client.Get(request);
+
+                Assert.IsNull(response.Status);
+            }
+        }
+        
+        [TestMethod]
+        public void AAT_Update<Name>s()
+        {
+            var request = new Update<Name>();
+
+            using (IServiceClient client = serviceClientFactory.GetServiceClient(ConfigurationManager.AppSettings["ServiceUrl"]))
+            {
+                var response = client.Put(request);
+
+                Assert.IsNull(response.Status);
+            }
+        }
+        
+        [TestMethod]
+        public void AAT_Delete<Name>s()
+        {
+            var request = new Delete<Name>();
+
+            using (IServiceClient client = serviceClientFactory.GetServiceClient(ConfigurationManager.AppSettings["ServiceUrl"]))
+            {
+                var response = client.Delete(request);
+
+                Assert.IsNull(response.Status);
+            }
+        }
+	  }
+}

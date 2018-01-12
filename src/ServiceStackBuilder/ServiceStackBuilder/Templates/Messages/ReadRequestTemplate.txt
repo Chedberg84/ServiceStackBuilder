@@ -1,0 +1,10 @@
+using ServiceStack;
+
+namespace <SolutionName>.ServiceModel
+{
+    [Route("/<Name>/", "GET")]
+    public class Read<Name>Request : IReturn<Read<Name>Response>
+    {
+        public <Name> <Name> { get; set; }
+    }
+}

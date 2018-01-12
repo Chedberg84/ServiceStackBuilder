@@ -1,0 +1,48 @@
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Moq;
+
+namespace <SolutionName>.UnitTests
+{
+    [TestClass]
+    public class <Name>RepositoryTests
+    {
+        private <Name>Repository <Name>Repository;
+
+        [TestInitialize]
+        public void TestSetup()
+        {
+            <Name>Repository = new <Name>Repository();
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(NotImplementedException))]
+        public void RepositoryShouldCreate()
+        {
+            var <name> = new <Name>();
+            <Name>Repository.Create(<name>);
+        }
+        
+        [TestMethod]
+        [ExpectedException(typeof(NotImplementedException))]
+        public void RepositoryShouldRead()
+        {
+            <Name>Repository.Read();
+        }
+        
+        [TestMethod]
+        [ExpectedException(typeof(NotImplementedException))]
+        public void RepositoryShouldUpdate()
+        {
+            var <name> = new <Name>();
+            <Name>Repository.Update(<name>);
+        }
+        
+        [TestMethod]
+        [ExpectedException(typeof(NotImplementedException))]
+        public void RepositoryShouldDelete()
+        {
+            var <name> = new <Name>();
+            <Name>Repository.Delete(<name>);
+        }
+    }
+}

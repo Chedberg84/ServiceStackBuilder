@@ -1,0 +1,10 @@
+using ServiceStack;
+
+namespace <SolutionName>.ServiceModel
+{
+    [Route("/<Name>/", "DELETE")]
+    public class Delete<Name>Request : IReturn<Delete<Name>Response>
+    {
+        public <Name> <Name> { get; set; }
+    }
+}

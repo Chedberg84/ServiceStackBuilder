@@ -1,0 +1,70 @@
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Moq;
+
+namespace <SolutionName>.UnitTests
+{
+    [TestClass]
+    public class <Name>ServiceTests
+    {
+        private ServiceStackHost appHost;
+        private <Name>Service <Name>Service;
+        private Mock<I<Name>Manager> MockI<Name>Manager;
+
+        [TestInitialize]
+        public void TestSetup()
+        {
+            appHost = new BasicAppHost(typeof(<Name>).Assembly).Init();
+            var mockHttpRequest = new MockHttpRequest();
+            var container = appHost.Container;
+            MockI<Name>Manager = new Mock<I<Name>Manager>();
+            container.Register(MockI<Name>Manager.Object);
+            <Name>Service = HostContext.ResolveService<<Name>Service>(mockHttpRequest);
+        }
+        
+        [TestCleanup]
+        public void TestCleanup()
+        {
+            appHost.Dispose();
+        }
+
+        [TestMethod]
+        public void <Name>ServiceCreate()
+        {
+            var request = new Create<Name>Request();
+            
+            var response = <Name>Service.Post(request);
+            
+            Assert.IsNull(response.Status);
+        }
+        
+        [TestMethod]
+        public void <Name>ServiceRead()
+        {
+            var request = new Read<Name>Request();
+            
+            var response = <Name>Service.Get(request);
+            
+            Assert.IsNull(response.Status);
+        }
+        
+        [TestMethod]
+        public void <Name>ServiceUpdate()
+        {
+            var request = new Update<Name>Request();
+            
+            var response = <Name>Service.Put(request);
+            
+            Assert.IsNull(response.Status);
+        }
+        
+        [TestMethod]
+        public void <Name>ServiceDelete()
+        {
+            var request = new Delete<Name>Request();
+            
+            var response = <Name>Service.Delete(request);
+            
+            Assert.IsNull(response.Status);
+        }
+    }
+}

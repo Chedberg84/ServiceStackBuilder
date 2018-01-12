@@ -2,12 +2,10 @@
 using System;
 using System.IO;
 using System.Linq;
-using System.Reflection;
-using System.Xml.Linq;
 
 namespace ServiceStackBuilder.Workers
 {
-    public class ModelBuilder : IBuilder
+    public class ModelBuilder : Builder
     {
         private ISolution Solution { get; set; }
 
@@ -16,7 +14,7 @@ namespace ServiceStackBuilder.Workers
             Solution = solution;
         }
 
-        public void Go()
+        public override void Go()
         {
             Console.WriteLine("Building Models");
 
@@ -28,46 +26,59 @@ namespace ServiceStackBuilder.Workers
             //create request and response files
             Directory.CreateDirectory(workingDir);
 
-            string requestTemplatePath = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), "Templates\\RequestTemplate.txt");
-            string requestTemplate = File.ReadAllText(requestTemplatePath);
-            requestTemplate = requestTemplate.Replace("<RequestTemplate>", UserInput.obj + "Request");
-            string requestFileName = string.Format("{0}{1}", UserInput.obj, "Request.cs");
-
-            File.WriteAllText(Path.Combine(workingDir, requestFileName), requestTemplate);
-
-            string responseTemplatePath = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), "Templates\\ResponseTemplate.txt");
-            string responseTemplate = File.ReadAllText(responseTemplatePath);
-            responseTemplate = responseTemplate.Replace("<ResponseTemplate>", UserInput.obj + "Response");
-            string responseFileName = string.Format("{0}{1}", UserInput.obj, "Response.cs");
-
-            File.WriteAllText(Path.Combine(workingDir, responseFileName), responseTemplate);
-
-            //Update the project file to include these 2 new files
-            XNamespace msbuild = "http://schemas.microsoft.com/developer/msbuild/2003";
-            string projFile = Path.Combine(UserInput.Root, project.Path);
-            XDocument doc = XDocument.Load(projFile);
-
-            var itemGroups = doc.Root.Elements(msbuild + "ItemGroup");
-            var compile = itemGroups.Where(x => x.Elements(msbuild + "Compile").Count() > 0).FirstOrDefault();
-
-            string requestInclude = "Messages\\" + UserInput.obj + "\\" + requestFileName;
-            string responseInclude = "Messages\\" + UserInput.obj + "\\" + responseFileName;
-
-            var existingRequest = compile.Elements().Where(x => x.FirstAttribute.Value.Equals(requestInclude)).FirstOrDefault();
-            if (existingRequest == null)
-            {
-                XElement docRequest = new XElement(msbuild + "Compile", new XAttribute("Include", requestInclude));
-                compile.Add(docRequest);
-            }
-
-            var existingResponse = compile.Elements().Where(x => x.FirstAttribute.Value.Equals(responseInclude)).FirstOrDefault();
-            if (existingResponse == null)
-            {
-                XElement docResponse = new XElement(msbuild + "Compile", new XAttribute("Include", responseInclude));
-                compile.Add(docResponse);
-            }
-
-            doc.Save(projFile);
+            BuildCreate(workingDir, project);
+            BuildRead(workingDir, project);
+            BuildUpdate(workingDir, project);
+            BuildDelete(workingDir, project);
         }
+        
+        private void BuildCreate(string workingDir, Project project)
+        {
+            string templatePathRequest = "Templates\\Models\\CreateRequestTemplate.txt";
+            string templatePathResponse = "Templates\\Models\\CreateResponseTemplate.txt";
+            
+            string createRequestFileName = GenericBuild(workingDir, templatePathRequest, "Create", "Request");
+            string createResponseFileName = GenericBuild(workingDir, templatePathResponse, "Create", "Response");
+            
+            string[] fileNames = new string[] { createRequestFileName, createResponseFileName };
+            GenericProjectUpdate(project, fileNames);
+        }
+        
+        private void BuildRead(string workingDir, Project project)
+        {
+            string templatePathRequest = "Templates\\Models\\ReadRequestTemplate.txt";
+            string templatePathResponse = "Templates\\Models\\ReadResponseTemplate.txt";
+            
+            string createRequestFileName = GenericBuild(workingDir, templatePathRequest, "Read", "Request");
+            string createResponseFileName = GenericBuild(workingDir, templatePathResponse, "Read", "Response");
+            
+            string[] fileNames = new string[] { createRequestFileName, createResponseFileName };
+            GenericProjectUpdate(project, fileNames);
+        }
+        
+        private void BuildUpdate(string workingDir, Project project)
+        {
+            string templatePathRequest = "Templates\\Models\\UpdateRequestTemplate.txt";
+            string templatePathResponse = "Templates\\Models\\UpdateResponseTemplate.txt";
+            
+            string createRequestFileName = GenericBuild(workingDir, templatePathRequest, "Update", "Request");
+            string createResponseFileName = GenericBuild(workingDir, templatePathResponse, "Update", "Response");
+            
+            string[] fileNames = new string[] { createRequestFileName, createResponseFileName };
+            GenericProjectUpdate(project, fileNames);
+        }
+        
+        private void BuildDelete(string workingDir, Project project)
+        {
+            string templatePathRequest = "Templates\\Models\\DeleteRequestTemplate.txt";
+            string templatePathResponse = "Templates\\Models\\DeleteResponseTemplate.txt";
+            
+            string createRequestFileName = GenericBuild(workingDir, templatePathRequest, "Delete", "Request");
+            string createResponseFileName = GenericBuild(workingDir, templatePathResponse, "Delete", "Response");
+            
+            string[] fileNames = new string[] { createRequestFileName, createResponseFileName };
+            GenericProjectUpdate(project, fileNames);
+        }
+        
     }
 }

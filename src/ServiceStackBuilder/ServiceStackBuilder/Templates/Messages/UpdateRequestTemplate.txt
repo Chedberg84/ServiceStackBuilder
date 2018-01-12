@@ -1,0 +1,10 @@
+using ServiceStack;
+
+namespace <SolutionName>.ServiceModel
+{
+    [Route("/<Name>/", "PUT")]
+    public class Update<Name>Request : IReturn<Update<Name>Response>
+    {
+        public <Name> <Name> { get; set; }
+    }
+}

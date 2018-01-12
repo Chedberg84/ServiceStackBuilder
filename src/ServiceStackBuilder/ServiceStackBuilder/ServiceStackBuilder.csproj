@@ -37,6 +37,26 @@
       <HintPath>..\packages\Onion.SolutionParser.Parser.1.0.0.0\lib\net45\Onion.SolutionParser.Parser.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="ServiceStack, Version=5.0.0.0, Culture=neutral, PublicKeyToken=02c12cbda47e6587, processorArchitecture=MSIL">
+      <HintPath>..\packages\ServiceStack.5.0.2\lib\net45\ServiceStack.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="ServiceStack.Client, Version=5.0.0.0, Culture=neutral, PublicKeyToken=02c12cbda47e6587, processorArchitecture=MSIL">
+      <HintPath>..\packages\ServiceStack.Client.5.0.2\lib\net45\ServiceStack.Client.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="ServiceStack.Common, Version=5.0.0.0, Culture=neutral, PublicKeyToken=02c12cbda47e6587, processorArchitecture=MSIL">
+      <HintPath>..\packages\ServiceStack.Common.5.0.2\lib\net45\ServiceStack.Common.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="ServiceStack.Interfaces, Version=5.0.0.0, Culture=neutral, PublicKeyToken=02c12cbda47e6587, processorArchitecture=MSIL">
+      <HintPath>..\packages\ServiceStack.Interfaces.5.0.2\lib\net45\ServiceStack.Interfaces.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="ServiceStack.Text, Version=5.0.0.0, Culture=neutral, PublicKeyToken=02c12cbda47e6587, processorArchitecture=MSIL">
+      <HintPath>..\packages\ServiceStack.Text.5.0.2\lib\net45\ServiceStack.Text.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -49,23 +69,43 @@
   <ItemGroup>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Workers\AcceptanceTestBuilder.cs" />
+    <Compile Include="Workers\AppHostBuilder.cs" />
+    <Compile Include="Workers\Builder.cs" />
     <Compile Include="Workers\IBuilder.cs" />
     <Compile Include="Workers\InterfaceBuilder.cs" />
     <Compile Include="Workers\RepositoryBuilder.cs" />
     <Compile Include="Workers\ManagerBuilder.cs" />
     <Compile Include="Workers\ModelBuilder.cs" />
+    <Compile Include="Workers\ServiceBuilder.cs" />
+    <Compile Include="Workers\UnitTestBuilder.cs" />
+    <Content Include="Templates\AAT\AatTemplate.txt" />
     <Content Include="Templates\Manager\ManagerInterfaceTemplate.txt" />
     <Content Include="Templates\Manager\ManagerTemplate.txt" />
-    <Content Include="Templates\Messages\RequestTemplate.txt" />
-    <Content Include="Templates\Messages\ResponseTemplate.txt" />
+    <Content Include="Templates\Messages\CreateRequestTemplate.txt" />
+    <Content Include="Templates\Messages\CreateResponseTemplate.txt" />
+    <Content Include="Templates\Messages\DeleteRequestTemplate.txt" />
+    <Content Include="Templates\Messages\DeleteResponseTemplate.txt" />
+    <Content Include="Templates\Messages\ReadRequestTemplate.txt" />
+    <Content Include="Templates\Messages\ReadResponseTemplate.txt" />
+    <Content Include="Templates\Messages\UnitTestManagerTemplate.txt" />
+    <Content Include="Templates\Messages\UnitTestRepositoryTemplate.txt" />
+    <Content Include="Templates\Messages\UnitTestServiceTemplate.txt" />
+    <Content Include="Templates\Messages\UpdateRequestTemplate.txt" />
+    <Content Include="Templates\Messages\UpdateResponseTemplate.txt" />
     <Content Include="Templates\Repository\RepositoryTemplate.txt" />
     <Content Include="Templates\Repository\RepositoryInterfaceTemplate.txt" />
     <Compile Include="UserInput.cs" />
+    <Content Include="Templates\Service\ServiceTemplate.txt" />
+    <Content Include="Templates\UnitTests\UnitTestManagerTemplate.txt" />
+    <Content Include="Templates\UnitTests\UnitTestRepositoryTemplate.txt" />
+    <Content Include="Templates\UnitTests\UnitTestServiceTemplate.txt" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

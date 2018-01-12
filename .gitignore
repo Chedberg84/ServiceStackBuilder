@@ -29,6 +29,7 @@ _ReSharper*/
 $tf*/
 *.dll
 src/packages/
+src/ServiceStackBuilder/packages/
 
 #Exceptions to ignore below
 !Dependencies/SQLite/DbLinq/DbLinq-0.20.1/*

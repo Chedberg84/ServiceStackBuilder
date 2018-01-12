@@ -7,7 +7,7 @@ using System.Xml.Linq;
 
 namespace ServiceStackBuilder.Workers
 {
-    public class ManagerBuilder : IBuilder
+    public class ManagerBuilder : Builder
     {
         private ISolution Solution { get; set; }
 
@@ -16,7 +16,7 @@ namespace ServiceStackBuilder.Workers
             Solution = solution;
         }
 
-        public void Go()
+        public override void Go()
         {
             Console.WriteLine("Building Managers");
 

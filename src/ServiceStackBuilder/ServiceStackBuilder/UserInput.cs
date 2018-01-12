@@ -1,6 +1,4 @@
-﻿using Onion.SolutionParser.Parser;
-using Onion.SolutionParser.Parser.Model;
-using System.IO;
+﻿using System.IO;
 
 namespace ServiceStackBuilder
 {
