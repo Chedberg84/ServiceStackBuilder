@@ -1,15 +1,14 @@
 using Onion.SolutionParser.Parser.Model;
-using System;
-using System.Collections.Generic;
+using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Reflection;
+using System.Xml.Linq;
 
 namespace ServiceStackBuilder.Workers
 {
     public abstract class Builder : IBuilder
     {
-        public virtual void Go() { };
+        public virtual void Go() { }
         
         internal string GenericBuild(string workingDir, string templatePath, string actionVerb, string actionType)
         {

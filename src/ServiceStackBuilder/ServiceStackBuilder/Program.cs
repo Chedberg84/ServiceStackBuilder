@@ -70,24 +70,15 @@ namespace ServiceStackBuilder
         static List<IBuilder> GetBuilders(ISolution solution)
         {
             List<IBuilder> builders = new List<IBuilder>();
-
-            //models
+            
             builders.Add(new ModelBuilder(solution));
             builders.Add(new InterfaceBuilder(solution));
             builders.Add(new ManagerBuilder(solution));
             builders.Add(new RepositoryBuilder(solution));
             builders.Add(new ServiceBuilder(solution));
+            builders.Add(new AppHostBuilder(solution));
 
             return builders;
-            
-            //Find the service deffinition
-            //Create a new service class with CRUD methods for this request object
-            //update service deffinition project file
-            
-            //Find the apphost file (or container manager file)
-            //update this file with new interface mappings
-
-            //DONE
         }
     }
 }
