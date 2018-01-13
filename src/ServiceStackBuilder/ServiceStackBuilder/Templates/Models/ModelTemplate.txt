@@ -1,0 +1,7 @@
+﻿namespace <SolutionName>.ServiceModels
+{
+    public class <Name>
+    {
+        
+    }
+}

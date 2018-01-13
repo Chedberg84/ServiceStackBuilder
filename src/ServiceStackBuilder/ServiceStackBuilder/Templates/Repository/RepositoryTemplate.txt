@@ -1,10 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using CostsApi.Interfaces;
+using CostsApi.ServiceModels;
+using System;
 
-namespace <SolutionName>.Interfaces
+namespace <SolutionName>.Repositories
 {
     public class <Name>Repository : I<Name>Repository
     {
@@ -22,12 +20,12 @@ namespace <SolutionName>.Interfaces
 			throw new NotImplementedException();
 		}
 
-        void Update(<Name> <name>)
+        public void Update(<Name> <name>)
 		{
 			throw new NotImplementedException();
 		}
 
-        void Delete(<Name> <name>)
+        public void Delete(<Name> <name>)
 		{
 			throw new NotImplementedException();
 		}

@@ -1,3 +1,4 @@
+using <SolutionName>.ServiceModels;
 using ServiceStack;
 
 namespace <SolutionName>.ServiceModel
@@ -5,5 +6,6 @@ namespace <SolutionName>.ServiceModel
     [Route("/<Name>/", "POST")]
     public class Create<Name>Request : IReturn<Create<Name>Response>
     {
+	    public <Name> <Name> { get; set; }
     }
 }

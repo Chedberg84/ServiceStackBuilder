@@ -21,7 +21,8 @@ namespace ServiceStackBuilder
             get
             {
                 var slnInfo = new FileInfo(sln);
-                return slnInfo.Name;
+                var name = slnInfo.Name.Substring(0, slnInfo.Name.Length - 4);
+                return name;
             }
         }
     }

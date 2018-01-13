@@ -3,20 +3,20 @@ using System;
 using System.IO;
 using System.Linq;
 
-namespace ServiceStackBuilder.Workers
+namespace ServiceStackBuilder.Builders
 {
-    public class ModelBuilder : Builder
+    public class MessageBuilder : BuilderBase
     {
         private ISolution Solution { get; set; }
 
-        public ModelBuilder(ISolution solution)
+        public MessageBuilder(ISolution solution)
         {
             Solution = solution;
         }
 
         public override void Go()
         {
-            Console.WriteLine("Building Models");
+            Console.WriteLine("Building Messages");
 
             var project = (from p in Solution.Projects where p.Name.ToLower().Contains("models") select p).FirstOrDefault();
 
@@ -34,50 +34,50 @@ namespace ServiceStackBuilder.Workers
         
         private void BuildCreate(string workingDir, Project project)
         {
-            string templatePathRequest = "Templates\\Models\\CreateRequestTemplate.txt";
-            string templatePathResponse = "Templates\\Models\\CreateResponseTemplate.txt";
+            string templatePathRequest = "Templates\\Messages\\CreateRequestTemplate.txt";
+            string templatePathResponse = "Templates\\Messages\\CreateResponseTemplate.txt";
             
             string createRequestFileName = GenericBuild(workingDir, templatePathRequest, "Create", "Request");
             string createResponseFileName = GenericBuild(workingDir, templatePathResponse, "Create", "Response");
             
             string[] fileNames = new string[] { createRequestFileName, createResponseFileName };
-            GenericProjectUpdate(project, fileNames);
+            GenericProjectUpdate(project, fileNames, "Messages" + "\\" + UserInput.obj);
         }
         
         private void BuildRead(string workingDir, Project project)
         {
-            string templatePathRequest = "Templates\\Models\\ReadRequestTemplate.txt";
-            string templatePathResponse = "Templates\\Models\\ReadResponseTemplate.txt";
+            string templatePathRequest = "Templates\\Messages\\ReadRequestTemplate.txt";
+            string templatePathResponse = "Templates\\Messages\\ReadResponseTemplate.txt";
             
             string createRequestFileName = GenericBuild(workingDir, templatePathRequest, "Read", "Request");
             string createResponseFileName = GenericBuild(workingDir, templatePathResponse, "Read", "Response");
             
             string[] fileNames = new string[] { createRequestFileName, createResponseFileName };
-            GenericProjectUpdate(project, fileNames);
+            GenericProjectUpdate(project, fileNames, "Messages" + "\\" + UserInput.obj);
         }
         
         private void BuildUpdate(string workingDir, Project project)
         {
-            string templatePathRequest = "Templates\\Models\\UpdateRequestTemplate.txt";
-            string templatePathResponse = "Templates\\Models\\UpdateResponseTemplate.txt";
+            string templatePathRequest = "Templates\\Messages\\UpdateRequestTemplate.txt";
+            string templatePathResponse = "Templates\\Messages\\UpdateResponseTemplate.txt";
             
             string createRequestFileName = GenericBuild(workingDir, templatePathRequest, "Update", "Request");
             string createResponseFileName = GenericBuild(workingDir, templatePathResponse, "Update", "Response");
             
             string[] fileNames = new string[] { createRequestFileName, createResponseFileName };
-            GenericProjectUpdate(project, fileNames);
+            GenericProjectUpdate(project, fileNames, "Messages" + "\\" + UserInput.obj);
         }
         
         private void BuildDelete(string workingDir, Project project)
         {
-            string templatePathRequest = "Templates\\Models\\DeleteRequestTemplate.txt";
-            string templatePathResponse = "Templates\\Models\\DeleteResponseTemplate.txt";
+            string templatePathRequest = "Templates\\Messages\\DeleteRequestTemplate.txt";
+            string templatePathResponse = "Templates\\Messages\\DeleteResponseTemplate.txt";
             
             string createRequestFileName = GenericBuild(workingDir, templatePathRequest, "Delete", "Request");
             string createResponseFileName = GenericBuild(workingDir, templatePathResponse, "Delete", "Response");
             
             string[] fileNames = new string[] { createRequestFileName, createResponseFileName };
-            GenericProjectUpdate(project, fileNames);
+            GenericProjectUpdate(project, fileNames, "Messages" + "\\" + UserInput.obj);
         }
         
     }

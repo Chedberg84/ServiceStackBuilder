@@ -6,9 +6,9 @@ using ServiceStack;
 using ServiceStack.Auth;
 using ServiceStack.Web;
 
-namespace ServiceStackBuilder.Workers
+namespace ServiceStackBuilder.Builders
 {
-    public class AppHostBuilder : Builder
+    public class AppHostBuilder : BuilderBase
     {
         private ISolution Solution { get; set; }
 

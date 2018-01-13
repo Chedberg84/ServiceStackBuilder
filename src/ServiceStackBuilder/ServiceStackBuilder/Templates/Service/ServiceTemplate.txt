@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using <SolutionName>.Interfaces;
+using <SolutionName>.ServiceModel;
+using ServiceStack;
 
 namespace <SolutionName>.ServiceDefinition
 {
@@ -15,7 +13,7 @@ namespace <SolutionName>.ServiceDefinition
             this.<name>Manager = <name>Manager;
         }
 
-        public Create<Name>Response Create(Create<Name>Request request)
+        public Create<Name>Response Post(Create<Name>Request request)
         {
             var response = new Create<Name>Response();
             
@@ -24,11 +22,11 @@ namespace <SolutionName>.ServiceDefinition
             return response;
         }
 
-        public Read<Name>Response Read(Read<Name>Request request)
+        public Read<Name>Response Get(Read<Name>Request request)
         {
             var response = new Read<Name>Response();
             
-            response.<Name> = <name>Manager.Read(request.<Name>);
+            response.<Name> = <name>Manager.Read();
             
             return response;
         }

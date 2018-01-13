@@ -1,3 +1,4 @@
+using <SolutionName>.ServiceModels;
 using ServiceStack;
 
 namespace <SolutionName>.ServiceModel

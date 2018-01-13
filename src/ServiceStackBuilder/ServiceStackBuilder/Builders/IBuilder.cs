@@ -1,4 +1,4 @@
-﻿namespace ServiceStackBuilder.Workers
+﻿namespace ServiceStackBuilder.Builders
 {
     public interface IBuilder
     {

@@ -1,6 +1,6 @@
 ﻿using Onion.SolutionParser.Parser;
 using Onion.SolutionParser.Parser.Model;
-using ServiceStackBuilder.Workers;
+using ServiceStackBuilder.Builders;
 using System;
 using System.Collections.Generic;
 
@@ -66,13 +66,14 @@ namespace ServiceStackBuilder
         static List<IBuilder> GetBuilders(ISolution solution)
         {
             List<IBuilder> builders = new List<IBuilder>();
-            
+
+            builders.Add(new MessageBuilder(solution));
             builders.Add(new ModelBuilder(solution));
             builders.Add(new InterfaceBuilder(solution));
             builders.Add(new ManagerBuilder(solution));
             builders.Add(new RepositoryBuilder(solution));
             builders.Add(new ServiceBuilder(solution));
-            builders.Add(new AppHostBuilder(solution));
+            //builders.Add(new AppHostBuilder(solution));
 
             return builders;
         }

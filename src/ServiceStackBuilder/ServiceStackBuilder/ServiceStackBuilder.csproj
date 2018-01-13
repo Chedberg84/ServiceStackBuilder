@@ -67,39 +67,83 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Builders\ModelBuilder.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Workers\AcceptanceTestBuilder.cs" />
-    <Compile Include="Workers\AppHostBuilder.cs" />
-    <Compile Include="Workers\Builder.cs" />
-    <Compile Include="Workers\IBuilder.cs" />
-    <Compile Include="Workers\InterfaceBuilder.cs" />
-    <Compile Include="Workers\RepositoryBuilder.cs" />
-    <Compile Include="Workers\ManagerBuilder.cs" />
-    <Compile Include="Workers\ModelBuilder.cs" />
-    <Compile Include="Workers\ServiceBuilder.cs" />
-    <Compile Include="Workers\UnitTestBuilder.cs" />
-    <Content Include="Templates\AAT\AatTemplate.txt" />
-    <Content Include="Templates\Manager\ManagerInterfaceTemplate.txt" />
-    <Content Include="Templates\Manager\ManagerTemplate.txt" />
-    <Content Include="Templates\Messages\CreateRequestTemplate.txt" />
-    <Content Include="Templates\Messages\CreateResponseTemplate.txt" />
-    <Content Include="Templates\Messages\DeleteRequestTemplate.txt" />
-    <Content Include="Templates\Messages\DeleteResponseTemplate.txt" />
-    <Content Include="Templates\Messages\ReadRequestTemplate.txt" />
-    <Content Include="Templates\Messages\ReadResponseTemplate.txt" />
-    <Content Include="Templates\Messages\UnitTestManagerTemplate.txt" />
-    <Content Include="Templates\Messages\UnitTestRepositoryTemplate.txt" />
-    <Content Include="Templates\Messages\UnitTestServiceTemplate.txt" />
-    <Content Include="Templates\Messages\UpdateRequestTemplate.txt" />
-    <Content Include="Templates\Messages\UpdateResponseTemplate.txt" />
-    <Content Include="Templates\Repository\RepositoryTemplate.txt" />
-    <Content Include="Templates\Repository\RepositoryInterfaceTemplate.txt" />
+    <Compile Include="Builders\AcceptanceTestBuilder.cs" />
+    <Compile Include="Builders\AppHostBuilder.cs" />
+    <Compile Include="Builders\BuilderBase.cs" />
+    <Compile Include="Builders\IBuilder.cs" />
+    <Compile Include="Builders\InterfaceBuilder.cs" />
+    <Compile Include="Builders\RepositoryBuilder.cs" />
+    <Compile Include="Builders\ManagerBuilder.cs" />
+    <Compile Include="Builders\MessageBuilder.cs" />
+    <Compile Include="Builders\ServiceBuilder.cs" />
+    <Compile Include="Builders\UnitTestBuilder.cs" />
+    <Content Include="Templates\AAT\AatTemplate.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Templates\Manager\ManagerInterfaceTemplate.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Templates\Manager\ManagerTemplate.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Templates\Messages\CreateRequestTemplate.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Templates\Messages\CreateResponseTemplate.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Templates\Messages\DeleteRequestTemplate.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Templates\Messages\DeleteResponseTemplate.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Templates\Messages\ReadRequestTemplate.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Templates\Messages\ReadResponseTemplate.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Templates\Messages\UnitTestManagerTemplate.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Templates\Messages\UnitTestRepositoryTemplate.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Templates\Messages\UnitTestServiceTemplate.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Templates\Messages\UpdateRequestTemplate.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Templates\Messages\UpdateResponseTemplate.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Templates\Repository\RepositoryTemplate.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Templates\Repository\RepositoryInterfaceTemplate.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Templates\Models\ModelTemplate.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Compile Include="UserInput.cs" />
-    <Content Include="Templates\Service\ServiceTemplate.txt" />
-    <Content Include="Templates\UnitTests\UnitTestManagerTemplate.txt" />
-    <Content Include="Templates\UnitTests\UnitTestRepositoryTemplate.txt" />
-    <Content Include="Templates\UnitTests\UnitTestServiceTemplate.txt" />
+    <Content Include="Templates\Service\ServiceTemplate.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Templates\UnitTests\UnitTestManagerTemplate.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Templates\UnitTests\UnitTestRepositoryTemplate.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Templates\UnitTests\UnitTestServiceTemplate.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
