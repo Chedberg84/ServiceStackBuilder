@@ -1,0 +1,76 @@
+using <SolutionName>.Interfaces;
+using <SolutionName>.ServiceDefinition;
+using <SolutionName>.ServiceModel;
+using <SolutionName>.ServiceModels;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Moq;
+using ServiceStack;
+using ServiceStack.Testing;
+
+namespace <SolutionName>.UnitTests
+{
+    [TestClass]
+    public class <Name>ServiceTests
+    {
+        private ServiceStackHost appHost;
+        private <Name>Service <name>Service;
+        private Mock<I<Name>Manager> mockI<Name>Manager;
+
+        [TestInitialize]
+        public void TestSetup()
+        {
+            appHost = new BasicAppHost(typeof(<Name>Service).Assembly).Init();
+            var mockHttpRequest = new MockHttpRequest();
+            var container = appHost.Container;
+            mockI<Name>Manager = new Mock<I<Name>Manager>();
+            container.Register(mockI<Name>Manager.Object);
+            <name>Service = HostContext.ResolveService<<Name>Service>(mockHttpRequest);
+        }
+        
+        [TestCleanup]
+        public void TestCleanup()
+        {
+            appHost.Dispose();
+        }
+
+        [TestMethod]
+        public void <Name>ServiceCreate()
+        {
+            var request = new Create<Name>Request();
+            
+            var response = <name>Service.Post(request);
+            
+            Assert.IsNull(response.ResponseStatus);
+        }
+        
+        [TestMethod]
+        public void <Name>ServiceRead()
+        {
+            var request = new Read<Name>Request();
+            
+            var response = <name>Service.Get(request);
+            
+            Assert.IsNull(response.ResponseStatus);
+        }
+        
+        [TestMethod]
+        public void <Name>ServiceUpdate()
+        {
+            var request = new Update<Name>Request();
+            
+            var response = <name>Service.Put(request);
+            
+            Assert.IsNull(response.ResponseStatus);
+        }
+        
+        [TestMethod]
+        public void <Name>ServiceDelete()
+        {
+            var request = new Delete<Name>Request();
+            
+            var response = <name>Service.Delete(request);
+            
+            Assert.IsNull(response.ResponseStatus);
+        }
+    }
+}

@@ -1,0 +1,50 @@
+using <SolutionName>.Repositories;
+using <SolutionName>.ServiceModels;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
+
+namespace <SolutionName>.UnitTests
+{
+    [TestClass]
+    public class <Name>RepositoryTests
+    {
+        private <Name>Repository <Name>Repository;
+
+        [TestInitialize]
+        public void TestSetup()
+        {
+            <Name>Repository = new <Name>Repository();
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(NotImplementedException))]
+        public void <Name>RepositoryShouldCreate()
+        {
+            var <name> = new <Name>();
+            <Name>Repository.Create(<name>);
+        }
+        
+        [TestMethod]
+        [ExpectedException(typeof(NotImplementedException))]
+        public void <Name>RepositoryShouldRead()
+        {
+            <Name>Repository.Read();
+        }
+        
+        [TestMethod]
+        [ExpectedException(typeof(NotImplementedException))]
+        public void <Name>RepositoryShouldUpdate()
+        {
+            var <name> = new <Name>();
+            <Name>Repository.Update(<name>);
+        }
+        
+        [TestMethod]
+        [ExpectedException(typeof(NotImplementedException))]
+        public void <Name>RepositoryShouldDelete()
+        {
+            var <name> = new <Name>();
+            <Name>Repository.Delete(<name>);
+        }
+    }
+}

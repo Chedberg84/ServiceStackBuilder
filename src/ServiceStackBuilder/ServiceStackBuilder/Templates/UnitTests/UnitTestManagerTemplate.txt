@@ -1,0 +1,63 @@
+using <SolutionName>.Interfaces;
+using <SolutionName>.Managers;
+using <SolutionName>.ServiceModels;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Moq;
+
+namespace <SolutionName>.UnitTests
+{
+    [TestClass]
+    public class <Name>ManagerTests
+    {
+        private <Name>Manager <name>Manager;
+        private Mock<I<Name>Repository> mockI<Name>Repository;
+
+        [TestInitialize]
+        public void TestSetup()
+        {
+            mockI<Name>Repository = new Mock<I<Name>Repository>();
+            <name>Manager = new <Name>Manager(mockI<Name>Repository.Object);
+            
+            mockI<Name>Repository.Setup(x => x.Create(It.IsAny<<Name>>()));
+            mockI<Name>Repository.Setup(x => x.Read()).Returns(new <Name>());
+            mockI<Name>Repository.Setup(x => x.Update(It.IsAny<<Name>>()));
+            mockI<Name>Repository.Setup(x => x.Delete(It.IsAny<<Name>>()));
+        }
+
+        [TestMethod]
+        public void <Name>ManagerShouldCreate()
+        {
+            var <name> = new <Name>();
+            <name>Manager.Create(<name>);
+
+			mockI<Name>Repository.Verify(x => x.Create(It.IsAny<<Name>>()), Times.Once);
+        }
+        
+        [TestMethod]
+        public void <Name>ManagerShouldRead()
+        {
+            var response = <name>Manager.Read();
+            Assert.IsNotNull(response);
+
+			mockI<Name>Repository.Verify(x => x.Read(), Times.Once);
+        }
+        
+        [TestMethod]
+        public void <Name>ManagerShouldUpdate()
+        {
+            var <name> = new <Name>();
+            <name>Manager.Update(<name>);
+
+			mockI<Name>Repository.Verify(x => x.Update(It.IsAny<<Name>>()), Times.Once);
+        }
+        
+        [TestMethod]
+        public void <Name>ManagerShouldDelete()
+        {
+            var <name> = new <Name>();
+            <name>Manager.Delete(<name>);
+
+			mockI<Name>Repository.Verify(x => x.Delete(It.IsAny<<Name>>()), Times.Once);
+        }
+    }
+}

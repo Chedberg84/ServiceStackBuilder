@@ -1,0 +1,33 @@
+﻿using CostsApi.Interfaces;
+using CostsApi.ServiceModels;
+using System;
+
+namespace <SolutionName>.Repositories
+{
+    public class <Name>Repository : I<Name>Repository
+    {
+		public <Name>Repository()
+		{
+		}
+
+        public void Create(<Name> <name>)
+		{
+			throw new NotImplementedException();
+		}
+
+        public <Name> Read()
+		{
+			throw new NotImplementedException();
+		}
+
+        public void Update(<Name> <name>)
+		{
+			throw new NotImplementedException();
+		}
+
+        public void Delete(<Name> <name>)
+		{
+			throw new NotImplementedException();
+		}
+    }
+}

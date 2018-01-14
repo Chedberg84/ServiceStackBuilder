@@ -1,0 +1,35 @@
+﻿using <SolutionName>.Interfaces;
+using <SolutionName>.ServiceModels;
+
+namespace <SolutionName>.Managers
+{
+    public class <Name>Manager : I<Name>Manager
+    {
+		private I<Name>Repository <name>Repository { get; set; }
+
+		public <Name>Manager(I<Name>Repository <name>Repository)
+		{
+			this.<name>Repository = <name>Repository;
+		}
+
+        public void Create(<Name> <name>)
+		{
+			<name>Repository.Create(<name>);
+		}
+
+        public <Name> Read()
+		{
+			return <name>Repository.Read();
+		}
+
+        public void Update(<Name> <name>)
+		{
+			<name>Repository.Update(<name>);
+		}
+
+        public void Delete(<Name> <name>)
+		{
+			<name>Repository.Delete(<name>);
+		}
+    }
+}

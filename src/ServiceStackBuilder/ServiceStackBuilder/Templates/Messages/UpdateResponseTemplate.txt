@@ -1,0 +1,9 @@
+using ServiceStack;
+
+namespace <SolutionName>.ServiceModel
+{
+    public class Update<Name>Response : IHasResponseStatus
+    {
+        public ResponseStatus ResponseStatus { get; set; }
+    }
+}

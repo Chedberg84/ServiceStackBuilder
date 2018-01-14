@@ -1,0 +1,12 @@
+﻿using <SolutionName>.ServiceModels;
+
+namespace <SolutionName>.Interfaces
+{
+    public interface I<Name>Repository
+    {
+        void Create(<Name> <name>);
+        <Name> Read();
+        void Update(<Name> <name>);
+        void Delete(<Name> <name>);
+    }
+}

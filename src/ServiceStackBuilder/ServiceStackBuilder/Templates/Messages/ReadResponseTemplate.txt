@@ -1,0 +1,12 @@
+using <SolutionName>.ServiceModels;
+using ServiceStack;
+
+namespace <SolutionName>.ServiceModel
+{
+    public class Read<Name>Response : IHasResponseStatus
+    {
+	    public <Name> <Name> { get; set; }
+
+        public ResponseStatus ResponseStatus { get; set; }
+    }
+}

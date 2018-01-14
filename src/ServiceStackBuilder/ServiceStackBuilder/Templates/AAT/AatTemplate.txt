@@ -1,0 +1,71 @@
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using <SolutionName>.ServiceModel;
+using ServiceStack;
+using System.Configuration;
+
+namespace <SolutionName>.AcceptanceTests
+{
+    [TestClass]
+    public class <Name>AcceptanceTests
+    {
+        JsonServiceClient serviceClient;
+
+        [TestInitialize]
+        public void Initialize()
+        {
+            serviceClient = new JsonServiceClient(ConfigurationManager.AppSettings["ServiceUrl"]);
+        }
+
+        [TestMethod]
+        public void AAT_Create<Name>s()
+        {
+            var request = new Create<Name>Request();
+
+            using (serviceClient)
+            {
+                var response = serviceClient.Post(request);
+
+                Assert.IsNull(response.ResponseStatus);
+            }
+        }
+        
+        [TestMethod]
+        public void AAT_Read<Name>s()
+        {
+            var request = new Read<Name>Request();
+
+            using (serviceClient)
+            {
+                var response = serviceClient.Get(request);
+
+                Assert.IsNull(response.ResponseStatus);
+            }
+        }
+        
+        [TestMethod]
+        public void AAT_Update<Name>s()
+        {
+            var request = new Update<Name>Request();
+
+            using (serviceClient)
+            {
+                var response = serviceClient.Put(request);
+
+                Assert.IsNull(response.ResponseStatus);
+            }
+        }
+        
+        [TestMethod]
+        public void AAT_Delete<Name>s()
+        {
+            var request = new Delete<Name>Request();
+
+            using (serviceClient)
+            {
+                var response = serviceClient.Delete(request);
+
+                Assert.IsNull(response.ResponseStatus);
+            }
+        }
+	  }
+}
