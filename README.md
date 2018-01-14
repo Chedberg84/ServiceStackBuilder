@@ -1,18 +1,24 @@
 # ServiceStackBuilder
 
-A C# console application that automatically adds service stack CRUD routes for you.
+Sick of adding the same boiler plate code to your server stack solution every time a new object is needed?
+Do you want to move beyond copy, paste & rename?
+Then ServiceStackBuilder is for you!
+
+ServiceStackBuilder is a C# console application that automatically adds service stack CRUD routes to your visual studio solution.
 
 Inputs:
 - Sln file location
 - New Request Object Name
 
 Output:
-- A Message class
-- A Response class
-- Creates a new service file with CRUD endpoints for your object
-- Creates a new Manager class
-- Creates a new Repository class
-- Sets up new dependencies in the AppHost (Container Manager)
+- A Message class for each CRUD
+- A Response class for each CRUD
+- Service class with CRUD endpoints for your object
+- Manager class with CRUD methods that hook into the repository.
+- Repository class with CRUD endpoints for you to implement.
+- Sets up new dependencies in the AppHost
+- Unit Tests
+- Automated Acceptance Tests
 
 Requirements:
 Requires a specific service stack sln structure to work properly
@@ -26,3 +32,4 @@ Requires a specific service stack sln structure to work properly
 - <slnName>.UnitTests.csproj: a library for unit testing
 - <slnName>.AcceptanceTests.csproj: a library for automated acceptance testing
 
+Happy Coding.
