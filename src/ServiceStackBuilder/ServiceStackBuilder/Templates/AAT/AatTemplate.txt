@@ -1,4 +1,5 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using <SolutionName>.ServiceModel;
 using ServiceStack;
 using System;
 using System.Configuration;
@@ -19,52 +20,52 @@ namespace <SolutionName>.AcceptanceTests
         [TestMethod]
         public void AAT_Create<Name>s()
         {
-            var request = new Create<Name>();
+            var request = new Create<Name>Request();
 
             using (IServiceClient client = serviceClientFactory.GetServiceClient(ConfigurationManager.AppSettings["ServiceUrl"]))
             {
                 var response = client.Post(request);
 
-                Assert.IsNull(response.Status);
+                Assert.IsNull(response.ResponseStatus);
             }
         }
         
         [TestMethod]
         public void AAT_Read<Name>s()
         {
-            var request = new Read<Name>();
+            var request = new Read<Name>Request();
 
             using (IServiceClient client = serviceClientFactory.GetServiceClient(ConfigurationManager.AppSettings["ServiceUrl"]))
             {
                 var response = client.Get(request);
 
-                Assert.IsNull(response.Status);
+                Assert.IsNull(response.ResponseStatus);
             }
         }
         
         [TestMethod]
         public void AAT_Update<Name>s()
         {
-            var request = new Update<Name>();
+            var request = new Update<Name>Request();
 
             using (IServiceClient client = serviceClientFactory.GetServiceClient(ConfigurationManager.AppSettings["ServiceUrl"]))
             {
                 var response = client.Put(request);
 
-                Assert.IsNull(response.Status);
+                Assert.IsNull(response.ResponseStatus);
             }
         }
         
         [TestMethod]
         public void AAT_Delete<Name>s()
         {
-            var request = new Delete<Name>();
+            var request = new Delete<Name>Request();
 
             using (IServiceClient client = serviceClientFactory.GetServiceClient(ConfigurationManager.AppSettings["ServiceUrl"]))
             {
                 var response = client.Delete(request);
 
-                Assert.IsNull(response.Status);
+                Assert.IsNull(response.ResponseStatus);
             }
         }
 	  }
