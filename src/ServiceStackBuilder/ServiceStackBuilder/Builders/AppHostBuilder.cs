@@ -5,6 +5,7 @@ using System.Reflection;
 using ServiceStack;
 using ServiceStack.Auth;
 using ServiceStack.Web;
+using System.IO;
 
 namespace ServiceStackBuilder.Builders
 {
@@ -20,13 +21,42 @@ namespace ServiceStackBuilder.Builders
         public override void Go()
         {
             Console.WriteLine("Building AppHost");
-
-            var project = (from p in Solution.Projects where p.Name.ToLower().Contains("???") select p).FirstOrDefault();
             
-            //read the app host file and add some new lines to it.
-            //MethodInfo mi = typeof(AppHost).GetMethod("InitializeContainer");
-            //MethodBody mb = mi.GetMethodBody();
-            //Console.WriteLine("\r\nMethod: {0}", mi);
+            string workingDir = Path.Combine(UserInput.Root, UserInput.SolutionName);
+            string appHostFile = Path.Combine(workingDir, "AppHost.cs");
+
+            string[] lines = File.ReadAllLines(appHostFile);
+
+            int index = -1;
+            for(int i=0; i < lines.Length; i++)
+            {
+                if(lines[i].ToLower().Contains("container.register"))
+                {
+                    index = i;
+                }
+            }
+
+            //add to the index line
+            if(index > -1)
+            {
+                string managerContainer = $"            container.RegisterAs<{UserInput.obj}Repository, I{UserInput.obj}Repository>();";
+                string repositoryContainer = $"            container.RegisterAs<{UserInput.obj}Manager, I{UserInput.obj}Manager>();";
+                lines[index] = lines[index] + Environment.NewLine + managerContainer + 
+                    Environment.NewLine + repositoryContainer + Environment.NewLine;
+            }
+            else
+            {
+                //look through other files for container registrations
+
+                //if nothing found, look for "public override void Configure("
+            }
+
+            //write the file changes to disk.
+            File.WriteAllLines(appHostFile, lines);
+
+            //use regex to find the right place to inject container registration
+
+            
         }
     }
 }

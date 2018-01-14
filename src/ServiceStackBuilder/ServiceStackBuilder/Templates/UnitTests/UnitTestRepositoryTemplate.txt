@@ -1,5 +1,7 @@
+using <SolutionName>.Repositories;
+using <SolutionName>.ServiceModels;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Moq;
+using System;
 
 namespace <SolutionName>.UnitTests
 {

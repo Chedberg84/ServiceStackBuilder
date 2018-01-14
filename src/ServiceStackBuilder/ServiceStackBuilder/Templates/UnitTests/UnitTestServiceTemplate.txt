@@ -1,5 +1,11 @@
+using <SolutionName>.Interfaces;
+using <SolutionName>.ServiceDefinition;
+using <SolutionName>.ServiceModel;
+using <SolutionName>.ServiceModels;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
+using ServiceStack;
+using ServiceStack.Testing;
 
 namespace <SolutionName>.UnitTests
 {
@@ -7,8 +13,8 @@ namespace <SolutionName>.UnitTests
     public class <Name>ServiceTests
     {
         private ServiceStackHost appHost;
-        private <Name>Service <Name>Service;
-        private Mock<I<Name>Manager> MockI<Name>Manager;
+        private <Name>Service <name>Service;
+        private Mock<I<Name>Manager> mockI<Name>Manager;
 
         [TestInitialize]
         public void TestSetup()
@@ -16,9 +22,9 @@ namespace <SolutionName>.UnitTests
             appHost = new BasicAppHost(typeof(<Name>).Assembly).Init();
             var mockHttpRequest = new MockHttpRequest();
             var container = appHost.Container;
-            MockI<Name>Manager = new Mock<I<Name>Manager>();
-            container.Register(MockI<Name>Manager.Object);
-            <Name>Service = HostContext.ResolveService<<Name>Service>(mockHttpRequest);
+            mockI<Name>Manager = new Mock<I<Name>Manager>();
+            container.Register(mockI<Name>Manager.Object);
+            <name>Service = HostContext.ResolveService<<Name>Service>(mockHttpRequest);
         }
         
         [TestCleanup]
@@ -32,9 +38,9 @@ namespace <SolutionName>.UnitTests
         {
             var request = new Create<Name>Request();
             
-            var response = <Name>Service.Post(request);
+            var response = <name>Service.Post(request);
             
-            Assert.IsNull(response.Status);
+            Assert.IsNull(response.ResponseStatus);
         }
         
         [TestMethod]
@@ -42,9 +48,9 @@ namespace <SolutionName>.UnitTests
         {
             var request = new Read<Name>Request();
             
-            var response = <Name>Service.Get(request);
+            var response = <name>Service.Get(request);
             
-            Assert.IsNull(response.Status);
+            Assert.IsNull(response.ResponseStatus);
         }
         
         [TestMethod]
@@ -52,9 +58,9 @@ namespace <SolutionName>.UnitTests
         {
             var request = new Update<Name>Request();
             
-            var response = <Name>Service.Put(request);
+            var response = <name>Service.Put(request);
             
-            Assert.IsNull(response.Status);
+            Assert.IsNull(response.ResponseStatus);
         }
         
         [TestMethod]
@@ -62,9 +68,9 @@ namespace <SolutionName>.UnitTests
         {
             var request = new Delete<Name>Request();
             
-            var response = <Name>Service.Delete(request);
+            var response = <name>Service.Delete(request);
             
-            Assert.IsNull(response.Status);
+            Assert.IsNull(response.ResponseStatus);
         }
     }
 }

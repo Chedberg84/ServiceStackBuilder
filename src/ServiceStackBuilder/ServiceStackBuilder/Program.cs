@@ -73,8 +73,10 @@ namespace ServiceStackBuilder
             builders.Add(new ManagerBuilder(solution));
             builders.Add(new RepositoryBuilder(solution));
             builders.Add(new ServiceBuilder(solution));
-            //builders.Add(new AppHostBuilder(solution));
-
+            builders.Add(new AppHostBuilder(solution));
+            builders.Add(new UnitTestBuilder(solution));
+            builders.Add(new AcceptanceTestBuilder(solution));
+            
             return builders;
         }
     }

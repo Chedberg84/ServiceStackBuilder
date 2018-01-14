@@ -31,7 +31,7 @@ namespace <SolutionName>.ServiceDefinition
             return response;
         }
 
-        public Update<Name>Response Update(Update<Name>Request request)
+        public Update<Name>Response Put(Update<Name>Request request)
         {
             var response = new Update<Name>Response();
             

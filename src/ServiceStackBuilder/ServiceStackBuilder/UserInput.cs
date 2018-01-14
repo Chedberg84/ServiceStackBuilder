@@ -16,6 +16,15 @@ namespace ServiceStackBuilder
             }
         }
 
+        public static string TestDir
+        {
+            get
+            {
+                var slnInfo = new FileInfo(sln);
+                return Path.Combine(slnInfo.Directory.Parent.FullName, "tests");
+            }
+        }
+
         public static string SolutionName
         {
             get
