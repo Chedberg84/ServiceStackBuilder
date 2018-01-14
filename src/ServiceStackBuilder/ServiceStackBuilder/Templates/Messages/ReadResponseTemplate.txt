@@ -5,7 +5,7 @@ namespace <SolutionName>.ServiceModel
 {
     public class Read<Name>Response : IHasResponseStatus
     {
-	    public BadAss BadAss { get; set; }
+	    public <Name> <Name> { get; set; }
 
         public ResponseStatus ResponseStatus { get; set; }
     }

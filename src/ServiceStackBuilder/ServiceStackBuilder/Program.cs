@@ -10,25 +10,36 @@ namespace ServiceStackBuilder
     {
         static void Main(string[] args)
         {
-            //Console.WriteLine("Welcome to the ServiceStack Builder console application.");
-            //Console.WriteLine("Location of sln file?");
-            //sln = Console.ReadLine();
+            CollectUserInput();
+            
+            bool valid = UserInput.Validate();
+            if(valid)
+            {
+                Console.WriteLine("Would you like me to get started?");
+                SayPlease();
 
-            //Console.WriteLine("New request object name.");
-            //obj = Console.ReadLine();
+                Console.WriteLine("Processing...");
 
-            //VERIFY THE USER INPUT HERE!!
-            //var slnInfo = new FileInfo(UserInput.sln);
+                Process();
 
-            Console.WriteLine("Would you like me to get started?");
-            SayPlease();
+                Console.WriteLine("Done doing your work for you. You're welcome.");
+                Console.ReadLine();
+            }
+            else
+            {
+                Console.WriteLine("User input was not valid. Please try again.");
+                CollectUserInput();
+            }
+        }
 
-            Console.WriteLine("Processing...");
+        static void CollectUserInput()
+        {
+            Console.WriteLine("Welcome to the ServiceStack Builder console application.");
+            Console.WriteLine("Location of sln file?");
+            UserInput.sln = Console.ReadLine();
 
-            Process();
-
-            Console.WriteLine("Done doing your work for you. You're welcome.");
-            Console.ReadLine();
+            Console.WriteLine("New request object name.");
+            UserInput.obj = Console.ReadLine();
         }
 
         static bool SayPlease()

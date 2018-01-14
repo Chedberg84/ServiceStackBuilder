@@ -18,7 +18,7 @@ namespace <SolutionName>.UnitTests
 
         [TestMethod]
         [ExpectedException(typeof(NotImplementedException))]
-        public void RepositoryShouldCreate()
+        public void <Name>RepositoryShouldCreate()
         {
             var <name> = new <Name>();
             <Name>Repository.Create(<name>);
@@ -26,14 +26,14 @@ namespace <SolutionName>.UnitTests
         
         [TestMethod]
         [ExpectedException(typeof(NotImplementedException))]
-        public void RepositoryShouldRead()
+        public void <Name>RepositoryShouldRead()
         {
             <Name>Repository.Read();
         }
         
         [TestMethod]
         [ExpectedException(typeof(NotImplementedException))]
-        public void RepositoryShouldUpdate()
+        public void <Name>RepositoryShouldUpdate()
         {
             var <name> = new <Name>();
             <Name>Repository.Update(<name>);
@@ -41,7 +41,7 @@ namespace <SolutionName>.UnitTests
         
         [TestMethod]
         [ExpectedException(typeof(NotImplementedException))]
-        public void RepositoryShouldDelete()
+        public void <Name>RepositoryShouldDelete()
         {
             var <name> = new <Name>();
             <Name>Repository.Delete(<name>);

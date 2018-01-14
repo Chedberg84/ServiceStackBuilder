@@ -19,7 +19,7 @@ namespace <SolutionName>.UnitTests
         [TestInitialize]
         public void TestSetup()
         {
-            appHost = new BasicAppHost(typeof(<Name>).Assembly).Init();
+            appHost = new BasicAppHost(typeof(<Name>Service).Assembly).Init();
             var mockHttpRequest = new MockHttpRequest();
             var container = appHost.Container;
             mockI<Name>Manager = new Mock<I<Name>Manager>();

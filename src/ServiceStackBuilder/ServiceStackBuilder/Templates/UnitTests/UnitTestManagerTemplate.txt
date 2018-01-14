@@ -25,7 +25,7 @@ namespace <SolutionName>.UnitTests
         }
 
         [TestMethod]
-        public void ManagerShouldCreate()
+        public void <Name>ManagerShouldCreate()
         {
             var <name> = new <Name>();
             <name>Manager.Create(<name>);
@@ -34,7 +34,7 @@ namespace <SolutionName>.UnitTests
         }
         
         [TestMethod]
-        public void ManagerShouldRead()
+        public void <Name>ManagerShouldRead()
         {
             var response = <name>Manager.Read();
             Assert.IsNotNull(response);
@@ -43,7 +43,7 @@ namespace <SolutionName>.UnitTests
         }
         
         [TestMethod]
-        public void ManagerShouldUpdate()
+        public void <Name>ManagerShouldUpdate()
         {
             var <name> = new <Name>();
             <name>Manager.Update(<name>);
@@ -52,7 +52,7 @@ namespace <SolutionName>.UnitTests
         }
         
         [TestMethod]
-        public void ManagerShouldDelete()
+        public void <Name>ManagerShouldDelete()
         {
             var <name> = new <Name>();
             <name>Manager.Delete(<name>);

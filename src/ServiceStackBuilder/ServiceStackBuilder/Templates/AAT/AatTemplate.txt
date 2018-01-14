@@ -1,7 +1,6 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using <SolutionName>.ServiceModel;
 using ServiceStack;
-using System;
 using System.Configuration;
 
 namespace <SolutionName>.AcceptanceTests
@@ -9,12 +8,12 @@ namespace <SolutionName>.AcceptanceTests
     [TestClass]
     public class <Name>AcceptanceTests
     {
-        AATServiceClientFactory serviceClientFactory;
+        JsonServiceClient serviceClient;
 
         [TestInitialize]
         public void Initialize()
         {
-            serviceClientFactory = new AATServiceClientFactory(Guid.NewGuid());
+            serviceClient = new JsonServiceClient(ConfigurationManager.AppSettings["ServiceUrl"]);
         }
 
         [TestMethod]
@@ -22,9 +21,9 @@ namespace <SolutionName>.AcceptanceTests
         {
             var request = new Create<Name>Request();
 
-            using (IServiceClient client = serviceClientFactory.GetServiceClient(ConfigurationManager.AppSettings["ServiceUrl"]))
+            using (serviceClient)
             {
-                var response = client.Post(request);
+                var response = serviceClient.Post(request);
 
                 Assert.IsNull(response.ResponseStatus);
             }
@@ -35,9 +34,9 @@ namespace <SolutionName>.AcceptanceTests
         {
             var request = new Read<Name>Request();
 
-            using (IServiceClient client = serviceClientFactory.GetServiceClient(ConfigurationManager.AppSettings["ServiceUrl"]))
+            using (serviceClient)
             {
-                var response = client.Get(request);
+                var response = serviceClient.Get(request);
 
                 Assert.IsNull(response.ResponseStatus);
             }
@@ -48,9 +47,9 @@ namespace <SolutionName>.AcceptanceTests
         {
             var request = new Update<Name>Request();
 
-            using (IServiceClient client = serviceClientFactory.GetServiceClient(ConfigurationManager.AppSettings["ServiceUrl"]))
+            using (serviceClient)
             {
-                var response = client.Put(request);
+                var response = serviceClient.Put(request);
 
                 Assert.IsNull(response.ResponseStatus);
             }
@@ -61,9 +60,9 @@ namespace <SolutionName>.AcceptanceTests
         {
             var request = new Delete<Name>Request();
 
-            using (IServiceClient client = serviceClientFactory.GetServiceClient(ConfigurationManager.AppSettings["ServiceUrl"]))
+            using (serviceClient)
             {
-                var response = client.Delete(request);
+                var response = serviceClient.Delete(request);
 
                 Assert.IsNull(response.ResponseStatus);
             }

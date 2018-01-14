@@ -4,8 +4,12 @@ namespace ServiceStackBuilder
 {
     public static class UserInput
     {
-        public static string sln = @"C:\GitHub\CostsApi\src\CostsApi.sln";
-        public static string obj = "BadAss";
+        public static string sln = "";
+        public static string obj = "";
+
+        //Testing values
+        //public static string sln = @"C:\GitHub\CostsApi\src\CostsApi.sln";
+        //public static string obj = "BadAss";
 
         public static string Root
         {
@@ -33,6 +37,27 @@ namespace ServiceStackBuilder
                 var name = slnInfo.Name.Substring(0, slnInfo.Name.Length - 4);
                 return name;
             }
+        }
+
+        public static bool Validate()
+        {
+            if (string.IsNullOrWhiteSpace(sln) || sln.Length <= 4)
+            {
+                return false;
+            }
+
+            FileInfo slnFile = new FileInfo(sln);
+            if(!slnFile.Exists)
+            {
+                return false;
+            }
+
+            if(string.IsNullOrWhiteSpace(obj))
+            {
+                return false;
+            }
+
+            return true;
         }
     }
 }
