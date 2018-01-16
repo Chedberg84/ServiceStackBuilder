@@ -10,25 +10,32 @@ namespace ServiceStackBuilder
     {
         static void Main(string[] args)
         {
-            CollectUserInput();
-            
-            bool valid = UserInput.Validate();
-            if(valid)
+            BuilderConstants.Init();
+
+            bool stop = false;
+            while(!stop)
             {
-                Console.WriteLine("Would you like me to get started?");
-                SayPlease();
-
-                Console.WriteLine("Processing...");
-
-                Process();
-
-                Console.WriteLine("Done doing your work for you. You're welcome.");
-                Console.ReadLine();
-            }
-            else
-            {
-                Console.WriteLine("User input was not valid. Please try again.");
                 CollectUserInput();
+
+                bool valid = UserInput.Validate();
+                if (valid)
+                {
+                    Console.WriteLine("Would you like me to get started?");
+                    SayPlease();
+
+                    Console.WriteLine("Processing...");
+
+                    Process();
+
+                    stop = true;
+                    Console.WriteLine("Done doing your work for you. You're welcome.");
+                    Console.ReadLine();
+                }
+                else
+                {
+                    Console.WriteLine("User input was not valid. Please try again.");
+                    stop = false;
+                }
             }
         }
 

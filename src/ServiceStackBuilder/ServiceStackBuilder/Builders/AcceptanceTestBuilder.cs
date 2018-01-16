@@ -18,7 +18,7 @@ namespace ServiceStackBuilder.Builders
         {
             Console.WriteLine("Building AATs");
 
-            var project = (from p in Solution.Projects where p.Name.ToLower().Contains("acceptancetest") select p).FirstOrDefault();
+            var project = GetProject(Solution, BuilderConstants.AATs);
 
             //Define the working directory
             string workingDir = Path.Combine(UserInput.TestDir, project.Name);

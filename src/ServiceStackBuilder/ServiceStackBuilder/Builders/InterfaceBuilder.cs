@@ -20,7 +20,7 @@ namespace ServiceStackBuilder.Builders
         {
             Console.WriteLine("Building Interfaces");
 
-            var project = (from p in Solution.Projects where p.Name.ToLower().Contains("interface") select p).FirstOrDefault();
+            var project = GetProject(Solution, BuilderConstants.Interfaces);
 
             //Define the working directory
             string workingDir = Path.Combine(UserInput.Root, project.Name, UserInput.obj);

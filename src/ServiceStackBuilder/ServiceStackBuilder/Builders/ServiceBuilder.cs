@@ -20,7 +20,7 @@ namespace ServiceStackBuilder.Builders
         {
             Console.WriteLine("Building Service");
 
-            var project = (from p in Solution.Projects where p.Name.ToLower().Contains("servicedefinition") select p).FirstOrDefault();
+            var project = GetProject(Solution, BuilderConstants.Service);
 
             //Define the working directory
             string workingDir = Path.Combine(UserInput.Root, project.Name);

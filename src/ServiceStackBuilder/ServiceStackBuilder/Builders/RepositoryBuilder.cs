@@ -18,7 +18,7 @@ namespace ServiceStackBuilder.Builders
         {
             Console.WriteLine("Building Repositories");
 
-            var project = (from p in Solution.Projects where p.Name.ToLower().Contains("repositories") select p).FirstOrDefault();
+            var project = GetProject(Solution, BuilderConstants.Repositories);
 
             //Define the working directory
             string workingDir = Path.Combine(UserInput.Root, project.Name, "CRUD");
