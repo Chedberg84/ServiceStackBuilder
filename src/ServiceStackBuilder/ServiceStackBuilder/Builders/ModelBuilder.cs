@@ -1,7 +1,6 @@
 ﻿using Onion.SolutionParser.Parser.Model;
 using System;
 using System.IO;
-using System.Linq;
 
 namespace ServiceStackBuilder.Builders
 {
@@ -18,8 +17,8 @@ namespace ServiceStackBuilder.Builders
         {
             Console.WriteLine("Building Models");
 
-            var project = (from p in Solution.Projects where p.Name.ToLower().Contains("models") select p).FirstOrDefault();
-
+            var project = GetProject(Solution, BuilderConstants.Models);
+            
             //Define the working directory
             string workingDir = Path.Combine(UserInput.Root, project.Name, "Models");
 

@@ -18,7 +18,7 @@ namespace ServiceStackBuilder.Builders
         {
             Console.WriteLine("Building UnitTests");
 
-            var project = (from p in Solution.Projects where p.Name.ToLower().Contains("unittest") select p).FirstOrDefault();
+            var project = GetProject(Solution, BuilderConstants.UnitTests);
 
             //Define the working directory
             string workingDir = Path.Combine(UserInput.TestDir, project.Name);

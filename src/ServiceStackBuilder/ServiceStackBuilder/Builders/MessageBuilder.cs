@@ -18,7 +18,7 @@ namespace ServiceStackBuilder.Builders
         {
             Console.WriteLine("Building Messages");
 
-            var project = (from p in Solution.Projects where p.Name.ToLower().Contains("models") select p).FirstOrDefault();
+            var project = GetProject(Solution, BuilderConstants.Models);
 
             //Define the working directory
             string workingDir = Path.Combine(UserInput.Root, project.Name, "Messages", UserInput.obj);

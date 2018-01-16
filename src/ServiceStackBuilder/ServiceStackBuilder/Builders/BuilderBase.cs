@@ -10,7 +10,14 @@ namespace ServiceStackBuilder.Builders
     public abstract class BuilderBase : IBuilder
     {
         public virtual void Go() { }
-        
+
+        internal Project GetProject(ISolution solution, string name)
+        {
+            return (from p in solution.Projects
+                    where p.Name.ToLower().Contains(name)
+                    select p).FirstOrDefault();
+        }
+
         internal string GenericBuild(string workingDir, string templatePath, string fileNamePrefix, string fileNameSuffix)
         {
             string templatePathFull = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), templatePath);
@@ -53,17 +60,24 @@ namespace ServiceStackBuilder.Builders
             XDocument doc = XDocument.Load(projFile);
 
             var itemGroups = doc.Root.Elements(msbuild + "ItemGroup");
-            var compile = itemGroups.Where(x => x.Elements(msbuild + "Compile").Count() > 0).FirstOrDefault();
+            var compileItemGroup = itemGroups.Where(x => x.Elements(msbuild + "Compile").Count() > 0).FirstOrDefault();
+
+            if(compileItemGroup == null)
+            {
+                //we need to create a new ItemGroup because one doesn't exist for compile.
+                compileItemGroup = new XElement("ItemGroup");
+                itemGroups.Last().AddAfterSelf(compileItemGroup);
+            }
 
             foreach(var name in fileNames)
             {
                 string include = includeFolder + "\\" + name;
 
-                var existing = compile.Elements().Where(x => x.FirstAttribute.Value.Equals(include)).FirstOrDefault();
+                var existing = compileItemGroup.Elements().Where(x => x.FirstAttribute.Value.Equals(include)).FirstOrDefault();
                 if (existing == null)
                 {
                     XElement docRequest = new XElement(msbuild + "Compile", new XAttribute("Include", include));
-                    compile.Add(docRequest);
+                    compileItemGroup.Add(docRequest);
                 }
             }
 
