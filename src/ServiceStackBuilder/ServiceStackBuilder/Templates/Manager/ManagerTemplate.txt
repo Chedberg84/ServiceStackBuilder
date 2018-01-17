@@ -1,5 +1,5 @@
 ﻿using <SolutionName>.Interfaces;
-using <SolutionName>.ServiceModels;
+using <SolutionName>.ServiceModel;
 
 namespace <SolutionName>.Managers
 {

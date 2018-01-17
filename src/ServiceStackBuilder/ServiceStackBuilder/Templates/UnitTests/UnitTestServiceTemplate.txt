@@ -1,7 +1,6 @@
 using <SolutionName>.Interfaces;
 using <SolutionName>.ServiceDefinition;
 using <SolutionName>.ServiceModel;
-using <SolutionName>.ServiceModels;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using ServiceStack;

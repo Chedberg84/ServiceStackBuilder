@@ -1,5 +1,5 @@
-﻿using CostsApi.Interfaces;
-using CostsApi.ServiceModels;
+﻿using <SolutionName>.Interfaces;
+using <SolutionName>.ServiceModel;
 using System;
 
 namespace <SolutionName>.Repositories
