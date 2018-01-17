@@ -1,6 +1,6 @@
 using <SolutionName>.Interfaces;
 using <SolutionName>.Managers;
-using <SolutionName>.ServiceModels;
+using <SolutionName>.ServiceModel;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 

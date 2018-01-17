@@ -1,4 +1,4 @@
-﻿using <SolutionName>.ServiceModels;
+﻿using <SolutionName>.ServiceModel;
 
 namespace <SolutionName>.Interfaces
 {
