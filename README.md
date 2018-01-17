@@ -32,4 +32,6 @@ Requires a specific service stack sln structure to work properly
 - <slnName>.UnitTests.csproj: a library for unit testing
 - <slnName>.AcceptanceTests.csproj: a library for automated acceptance testing
 
+Note: if you have a similar project structure but you name your projects differently, that's okay! These variables can be changed in the app.config.
+
 Happy Coding.
