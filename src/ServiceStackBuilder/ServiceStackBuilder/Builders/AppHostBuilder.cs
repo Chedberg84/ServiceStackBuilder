@@ -23,40 +23,56 @@ namespace ServiceStackBuilder.Builders
             Console.WriteLine("Building AppHost");
             
             string workingDir = Path.Combine(UserInput.Root, UserInput.SolutionName);
-            string appHostFile = Path.Combine(workingDir, "AppHost.cs");
-
-            string[] lines = File.ReadAllLines(appHostFile);
-
+            FileInfo[] files = new DirectoryInfo(workingDir).GetFiles();
+            string[] lines = null;
             int index = -1;
-            for(int i=0; i < lines.Length; i++)
+            string FileLocation = null;
+
+            foreach(var file in files)
             {
-                if(lines[i].ToLower().Contains("container.register"))
+                if(file.Extension.ToLower().Equals(".cs"))
+                {
+                    lines = File.ReadAllLines(file.FullName);
+                    index = GetContainerRegistrationIndex(lines);
+
+                    //if we find a registration point in the code file, exit loop.
+                    if(index > -1)
+                    {
+                        FileLocation = file.FullName;
+                        break;
+                    }
+                }
+            }
+            
+            //add to the index line
+            if(index > -1 && lines != null)
+            {
+                string managerContainer = $"            container.RegisterAs<{UserInput.obj}Repository, I{UserInput.obj}Repository>();";
+                string repositoryContainer = $"            container.RegisterAs<{UserInput.obj}Manager, I{UserInput.obj}Manager>();";
+                lines[index] = lines[index] + Environment.NewLine + Environment.NewLine + managerContainer + 
+                    Environment.NewLine + repositoryContainer;
+
+                //write the file changes to disk.
+                File.WriteAllLines(FileLocation, lines);
+            }
+            else
+            {
+                Console.WriteLine("WARNING: A container registration method was not found in the main project.");
+            }
+        }
+        
+        private int GetContainerRegistrationIndex(string[] lines)
+        {
+            int index = -1;
+            for (int i = 0; i < lines.Length; i++)
+            {
+                if (lines[i].ToLower().Contains(BuilderConstants.ContainerRegistration))
                 {
                     index = i;
                 }
             }
 
-            //add to the index line
-            if(index > -1)
-            {
-                string managerContainer = $"            container.RegisterAs<{UserInput.obj}Repository, I{UserInput.obj}Repository>();";
-                string repositoryContainer = $"            container.RegisterAs<{UserInput.obj}Manager, I{UserInput.obj}Manager>();";
-                lines[index] = lines[index] + Environment.NewLine + managerContainer + 
-                    Environment.NewLine + repositoryContainer + Environment.NewLine;
-            }
-            else
-            {
-                //look through other files for container registrations
-
-                //if nothing found, look for "public override void Configure("
-            }
-
-            //write the file changes to disk.
-            File.WriteAllLines(appHostFile, lines);
-
-            //use regex to find the right place to inject container registration
-
-            
+            return index;
         }
     }
 }

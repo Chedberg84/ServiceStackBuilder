@@ -1,6 +1,6 @@
 # ServiceStackBuilder
 
-Sick of adding the same boiler plate code to your server stack solution every time a new object is needed?
+Sick of adding the same boiler plate code to your server stack solution every time a new route is needed?
 Do you want to move beyond copy, paste & rename?
 Then ServiceStackBuilder is for you!
 
