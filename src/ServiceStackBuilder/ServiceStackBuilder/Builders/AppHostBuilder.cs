@@ -66,10 +66,10 @@ namespace ServiceStackBuilder.Builders
             int index = -1;
             for (int i = 0; i < lines.Length; i++)
             {
-                if (lines[i].ToLower().Contains(BuilderConstants.ContainerRegistration))
-                {
-                    index = i;
-                }
+                //if (lines[i].ToLower().Contains(BuilderConstants.ContainerRegistration))
+                //{
+                //    index = i;
+                //}
             }
 
             return index;
